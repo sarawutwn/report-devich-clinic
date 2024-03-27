@@ -23,5 +23,5 @@ func main() {
 	fmt.Println("Start server")
 	app.Use(cors.New(Config.CorsConfigDefault))
 	router.SetupRoutes(app)
-	app.Listen(":4000")
+	app.Listen(":10000")
 }
