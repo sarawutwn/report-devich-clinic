@@ -8,6 +8,7 @@ import (
 
 func SetupRoutes(router fiber.Router) {
 	app := router.Group("reports")
+	app.Get("/", ReportController.GetTeestReport)
 	app.Get("/dashboard", ReportController.ReportDashbord)
 	app.Get("/report-date", ReportController.ReportDashbordOnDate)
 	app.Get("/report-quota/:page_size/:page", ReportController.GetQuotaByStoreID)

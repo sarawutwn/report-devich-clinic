@@ -9,6 +9,14 @@ import (
 	"github.com/gofiber/fiber/v2"
 )
 
+func GetTeestReport(c *fiber.Ctx) error {
+
+	return c.Status(fiber.StatusAccepted).JSON(fiber.Map{
+		"status": "success",
+		"result": "Hello from report services.",
+	})
+}
+
 func ReportDashbord(c *fiber.Ctx) error {
 	result, err := ReportServices.ReportDashbord(c.Locals("store_id").(string))
 	if err != nil {
