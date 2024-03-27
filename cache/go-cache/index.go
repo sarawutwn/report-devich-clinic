@@ -1,0 +1,13 @@
+package GoCache
+
+import (
+	"time"
+
+	"github.com/patrickmn/go-cache"
+)
+
+var Cache *cache.Cache
+
+func InitCache() {
+	Cache = cache.New(5*time.Minute, 10*time.Minute) // ตั้งค่า go-cache ตามที่คุณต้องการ
+}
