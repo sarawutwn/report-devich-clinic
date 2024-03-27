@@ -2,7 +2,10 @@ package main
 
 import (
 	GoCache "backend-app/cache/go-cache"
-	"backend-app/database"
+	"backend-app/config"
+	"fmt"
+
+	// "backend-app/database"
 	"backend-app/router"
 
 	Config "backend-app/config"
@@ -12,12 +15,14 @@ import (
 )
 
 func main() {
-	database.Connect()
+	// database.Connect()
 	GoCache.InitCache()
 	app := fiber.New(fiber.Config{
 		// Prefork: true,
 	})
 
+	fmt.Println("Start server")
+	fmt.Println(config.GetEnvConfig("DATABASE_URL"))
 	app.Use(cors.New(Config.CorsConfigDefault))
 	router.SetupRoutes(app)
 	app.Listen(":4000")
