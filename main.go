@@ -16,7 +16,7 @@ func main() {
 	database.Connect()
 	GoCache.InitCache()
 	app := fiber.New(fiber.Config{
-		Prefork: true,
+		// Prefork: true,
 	})
 
 	app.Use(cors.New(Config.CorsConfigDefault))
