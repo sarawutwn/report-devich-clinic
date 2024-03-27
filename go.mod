@@ -72,6 +72,7 @@ require (
 
 require (
 	github.com/andybalholm/brotli v1.0.5 // indirect
+	github.com/go-playground/validator v9.31.0+incompatible
 	github.com/go-sql-driver/mysql v1.7.1 // indirect
 	github.com/gofiber/jwt/v3 v3.3.10
 	github.com/golang-jwt/jwt v3.2.2+incompatible
