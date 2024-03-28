@@ -7,6 +7,6 @@ import (
 )
 
 func SetupRoutes(router fiber.Router) {
-	app := router.Group("ads")
+	app := router.Group("promotion")
 	app.Get("/get-all", AdsControllers.GetAdsList)
 }
