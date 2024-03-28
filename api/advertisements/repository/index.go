@@ -10,7 +10,8 @@ func GetAdsList() ([]AdsSchema.GetAds, error) {
 	rows, err := db.Query(`
 		SELECT
 			ads_id,
-			ads_name
+			ads_name,
+			ads_price
 		FROM advertisements
 		ORDER BY created_at DESC
 	`)
@@ -20,7 +21,7 @@ func GetAdsList() ([]AdsSchema.GetAds, error) {
 	var adsLists []AdsSchema.GetAds
 	for rows.Next() {
 		var adsList AdsSchema.GetAds
-		err = rows.Scan(&adsList.AdsID, &adsList.AdsName)
+		err = rows.Scan(&adsList.AdsID, &adsList.AdsName, &adsList.AdsPrice)
 		if err != nil {
 			return nil, err
 		}
