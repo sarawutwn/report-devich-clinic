@@ -34,24 +34,24 @@ func CreateCustomerADS(customer_name string, adsID string) error {
 	}
 }
 
-func UpdateStatusReading(customerID string) error {
+func UpdateStatusReading(customerID string) ([]CustomerSchema.GetCustomer, error) {
 	db := database.DB
 	query := `UPDATE customers SET customer_status=$1 WHERE customer_id=$2;`
 	_, err := db.Exec(query, "อ่านแล้ว", customerID)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return GetCustomerAll()
 }
 
-func UpdateStatusIsActive(customerID string, isActive bool) error {
+func UpdateStatusIsActive(customerID string, isActive bool) ([]CustomerSchema.GetCustomer, error) {
 	db := database.DB
 	query := `UPDATE customers SET customer_is_active=$1 WHERE customer_id=$2;`
 	_, err := db.Exec(query, isActive, customerID)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return GetCustomerAll()
 }
 
 func GetCustomerAll() ([]CustomerSchema.GetCustomer, error) {

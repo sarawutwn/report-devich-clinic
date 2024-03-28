@@ -38,7 +38,7 @@ func CustomerNew(c *fiber.Ctx) error {
 }
 
 func UpdateStatusReading(c *fiber.Ctx) error {
-	err := CustomerServices.UpdateStatusReading(c.Params("customer_id"))
+	result, err := CustomerServices.UpdateStatusReading(c.Params("customer_id"))
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"status":  "error",
@@ -47,6 +47,7 @@ func UpdateStatusReading(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusAccepted).JSON(fiber.Map{
 		"status":  "success",
+		"result":  result,
 		"message": "Update customer status successfully.",
 	})
 }
@@ -65,7 +66,7 @@ func UpdateStatusIsActive(c *fiber.Ctx) error {
 			"message": errors,
 		})
 	}
-	err = CustomerServices.UpdateIsActive(body.CustomerID, body.IsActive)
+	result, err := CustomerServices.UpdateIsActive(body.CustomerID, body.IsActive)
 	if err != nil {
 		return c.Status(fiber.StatusBadRequest).JSON(fiber.Map{
 			"status":  "error",
@@ -74,6 +75,7 @@ func UpdateStatusIsActive(c *fiber.Ctx) error {
 	}
 	return c.Status(fiber.StatusAccepted).JSON(fiber.Map{
 		"status":  "success",
+		"result":  result,
 		"message": "Update customer status successfully.",
 	})
 }

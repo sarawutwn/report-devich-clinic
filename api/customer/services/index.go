@@ -9,11 +9,11 @@ func CreateCustomer(CustomerName string, AdsID string) error {
 	return CustomerRepository.CreateCustomerADS(CustomerName, AdsID)
 }
 
-func UpdateStatusReading(CustomerID string) error {
+func UpdateStatusReading(CustomerID string) ([]CustomerSchema.GetCustomer, error) {
 	return CustomerRepository.UpdateStatusReading(CustomerID)
 }
 
-func UpdateIsActive(CustomerID string, IsActive bool) error {
+func UpdateIsActive(CustomerID string, IsActive bool) ([]CustomerSchema.GetCustomer, error) {
 	return CustomerRepository.UpdateStatusIsActive(CustomerID, IsActive)
 }
 

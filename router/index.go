@@ -1,6 +1,7 @@
 package router
 
 import (
+	AdsRouter "backend-app/api/advertisements"
 	CustomerRouter "backend-app/api/customer"
 	ReportRouter "backend-app/api/report"
 
@@ -12,4 +13,5 @@ func SetupRoutes(app *fiber.App) {
 	api := app.Group("api", logger.New())
 	ReportRouter.SetupRoutes(api)
 	CustomerRouter.SetupRoutes(api)
+	AdsRouter.SetupRoutes(api)
 }
