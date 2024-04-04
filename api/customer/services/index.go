@@ -20,3 +20,28 @@ func UpdateIsActive(CustomerID string, IsActive bool) ([]CustomerSchema.GetCusto
 func GetCustomer() ([]CustomerSchema.GetCustomer, error) {
 	return CustomerRepository.GetCustomerAll()
 }
+
+func CreateInvoice(customerID string, Price int, InvoiceDate string, AdsID []string) ([]CustomerSchema.AdsInvoice, error) {
+	result, err := CustomerRepository.GetAdsList(AdsID)
+	if err != nil {
+		return nil, err
+	}
+	err = CustomerRepository.CreateInvoice(customerID, InvoiceDate, result, Price)
+	return result, err
+}
+
+func UpdateBranchData(AvgAmount string, DuoAmount int, BranchID string) error {
+	return CustomerRepository.UpdateBranchData(AvgAmount, DuoAmount, BranchID)
+}
+
+func GetCustomerReportAds() ([]CustomerSchema.GetCustomerReport, error) {
+	return CustomerRepository.GetCustomerAds()
+}
+
+func GetReportCustomerInvoice() ([]CustomerSchema.InvoiceItemData, error) {
+	return CustomerRepository.GetReportInvoice()
+}
+
+func GetBranch() (*CustomerSchema.BranchData, error) {
+	return CustomerRepository.GetBranch()
+}

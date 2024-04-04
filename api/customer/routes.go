@@ -12,4 +12,9 @@ func SetupRoutes(router fiber.Router) {
 	app.Patch("/update/status-reading/:customer_id", CustomerControllers.UpdateStatusReading)
 	app.Put("/update/status-is-active", CustomerControllers.UpdateStatusIsActive)
 	app.Get("/get-all", CustomerControllers.GetCustomer)
+	app.Post("/create-invoice", CustomerControllers.CreateInvoice)
+	app.Get("/get-report", CustomerControllers.GetInvoiceReport)
+	app.Get("/get-customer-report", CustomerControllers.GetCustomerReport)
+	app.Get("/branches", CustomerControllers.GetBranch)
+	app.Put("/branches", CustomerControllers.UpdateBranch)
 }
