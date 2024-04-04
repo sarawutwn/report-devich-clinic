@@ -22,7 +22,7 @@ func main() {
 		// Prefork: true,
 	})
 	c := cron.New()
-	c.AddFunc("@every 50s", func() {
+	c.AddFunc("@every 110s", func() {
 		fmt.Println(time.Now())
 	})
 	c.Start()
