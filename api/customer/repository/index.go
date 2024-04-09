@@ -254,12 +254,15 @@ func CreateInvoice(CustomerID string, InvoiceDate string, AdsList []CustomerSche
 	for i := range AdsList {
 		total_price += AdsList[i].AdsPrice
 	}
+	fmt.Println(total_price)
+	fmt.Println(PayAmount)
 	payer := 0
 	if total_price-PayAmount == 0 {
 		payer += total_price
 	} else {
 		payer = total_price - PayAmount
 	}
+	fmt.Println(payer)
 	_, err := db.Exec(query, newUUID.String(), InvoiceDate, total_price, payer, time.Now(), CustomerID)
 	if err != nil {
 		return nil

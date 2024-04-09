@@ -26,7 +26,19 @@ func CreateInvoice(customerID string, Price int, InvoiceDate string, AdsID []str
 	if err != nil {
 		return nil, err
 	}
-	err = CustomerRepository.CreateInvoice(customerID, InvoiceDate, result, Price)
+	var res []CustomerSchema.AdsInvoice
+	for i := range AdsID {
+		for j := range result {
+			if result[j].AdsID == AdsID[i] {
+				var resp CustomerSchema.AdsInvoice
+				resp.AdsID = result[j].AdsID
+				resp.AdsName = result[j].AdsName
+				resp.AdsPrice = result[j].AdsPrice
+				res = append(res, resp)
+			}
+		}
+	}
+	err = CustomerRepository.CreateInvoice(customerID, InvoiceDate, res, Price)
 	return result, err
 }
 
